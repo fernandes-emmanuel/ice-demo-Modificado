@@ -1,6 +1,6 @@
 import sys, Ice
 import Demo
- 
+
 communicator = Ice.initialize(sys.argv)
 
 base1 = communicator.stringToProxy("SimplePrinter1:tcp -h 34.203.80.210 -p 5678")
@@ -13,6 +13,14 @@ if (not printer1) or (not printer2):
 rep = printer1.printString("Hello World from printer1!")
 print(rep)
 rep = printer2.printString("Hello World from printer2!")
+print(rep)
+rep = printer1.printUpper("Hello again from printer1!")
+print(rep)
+rep = printer2.countWords("How many words are in this sentence?")
+print(rep)
+rep = printer1.getPrintCount()
+print(rep)
+rep = printer2.getPrintCount()
 print(rep)
 
 communicator.waitForShutdown()
